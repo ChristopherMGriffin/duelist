@@ -31,7 +31,7 @@ namespace amazen_server.Services
         double? DaysRemainingByHoursInterval;
         DateTime? IntervalHoursNextDueDate = null;
         DateTime? IntervalMonthsNextDueDate = null;
-        
+        var today = DateTime.Parse("2018-06-19T00:00:00");
 
         if (task.IntervalMonths != null && task.LogDate != null)
         {
@@ -41,7 +41,7 @@ namespace amazen_server.Services
         if (task.LogHours != null && task.IntervalHours != null)
         {
           DaysRemainingByHoursInterval = (((task.LogHours + task.IntervalHours) - plane.CurrentHours) / plane.DailyHours);
-          IntervalHoursNextDueDate = logDate.AddDays((double)DaysRemainingByHoursInterval);
+          IntervalHoursNextDueDate = today.AddDays((double)DaysRemainingByHoursInterval);
         }
 
         if (IntervalHoursNextDueDate <= IntervalMonthsNextDueDate || IntervalMonthsNextDueDate == null)
