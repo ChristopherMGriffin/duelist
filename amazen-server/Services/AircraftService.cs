@@ -31,6 +31,7 @@ namespace amazen_server.Services
         double? DaysRemainingByHoursInterval;
         DateTime? IntervalHoursNextDueDate = null;
         DateTime? IntervalMonthsNextDueDate = null;
+        
 
         if (task.IntervalMonths != null && task.LogDate != null)
         {
@@ -42,8 +43,6 @@ namespace amazen_server.Services
           DaysRemainingByHoursInterval = (((task.LogHours + task.IntervalHours) - plane.CurrentHours) / plane.DailyHours);
           IntervalHoursNextDueDate = logDate.AddDays((double)DaysRemainingByHoursInterval);
         }
-
-        // if (IntervalHoursNextDueDate != null && IntervalMonthsNextDueDate != null)
 
         if (IntervalHoursNextDueDate <= IntervalMonthsNextDueDate || IntervalMonthsNextDueDate == null)
         {
