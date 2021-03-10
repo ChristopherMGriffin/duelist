@@ -15,8 +15,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MySqlConnector;
+using amazen_server.Services;
+using amazen_server.Repositories;
+// using amazen_server.DB;
 
-namespace amazen-server
+namespace amazen_server
 {
     public class Startup
     {
@@ -64,6 +67,9 @@ namespace amazen-server
             });
 
             // REVIEW Do you want to do something here?
+            services.AddTransient<AircraftService>();
+            services.AddTransient<AircraftRepository>();
+            // services.AddTransient<FakeDb>();
 
         }
 
